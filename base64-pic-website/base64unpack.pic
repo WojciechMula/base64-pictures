@@ -1,0 +1,43 @@
+.PS
+
+arrowwid = 0.08
+arrowht  = 0.2
+linethick = 0.3
+maxpswid = 20
+
+hspace = 1.2
+
+copy "base64.pic.macros"
+
+OUT:unpacked
+
+down
+move OUT.height
+right
+move -OUT.width
+
+[
+    left
+    box invisible "byte 0" width 8*bw
+    box "byte 1" same
+    box "byte 2" same
+    box "byte 3" same
+]
+
+up
+move 2*hspace
+left
+
+IN:packed
+
+
+
+
+for i=0 to 5 do {
+    arrow from IN.A[i].b to OUT.A[i].t
+    arrow from IN.B[i].b to OUT.B[i].t
+    arrow from IN.C[i].b to OUT.C[i].t
+    arrow from IN.D[i].b to OUT.D[i].t
+}
+
+.PE

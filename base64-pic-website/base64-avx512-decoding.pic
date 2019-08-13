@@ -1,0 +1,219 @@
+.PS
+
+arrowwid = 0.08
+arrowht  = 0.2
+linethick = 0.3
+maxpswid = 20
+
+hspace = 1.2
+
+define encoded {[
+    right
+    A:box "'B'" width 0.5 height 0.5 shaded "lightgreen"
+    B:box "'A'" same
+    C:box "'S'" same
+    D:box "'E'" same
+
+    E:box "'+'" same
+    F:box "'6'" same
+    G:box "'4'" same
+    H:box "'+'" same
+
+    I:box "'e'" same
+    J:box "'n'" same
+    K:box "'c'" same
+    L:box "'o'" same
+
+    Placeholder:box "... 48 bytes ..." width 6 height 0.5 dashed
+
+    M:box "'d'" width 0.5 height 0.5 shaded "lightgreen"
+    N:box "'e'" same
+    O:box "'d'" same
+    P:box "'/'" same
+]}
+
+define unpacked {[
+    right
+    A:box "a" width 0.5 height 0.5 shaded "lightblue"
+    B:box "b" same
+    C:box "c" same
+    D:box "d" same
+
+    E:box "d" same
+    F:box "e" same
+    G:box "f" same
+    H:box "h" same
+
+    I:box "i" same
+    J:box "j" same
+    K:box "k" same
+    L:box "l" same
+
+    Placeholder:box "" width 6 height 0.5 dashed
+
+    M:box "m" width 0.5 height 0.5 shaded "lightblue"
+    N:box "n" same
+    O:box "o" same
+    P:box "p" same
+]}
+
+define packed {[
+    right
+    A:[
+        A:box "0" width 0.5 height 0.5 shaded "lightgray"
+        B:box "1" same
+        C:box "2" same
+          box width 0.5 height 0.5
+    ]
+
+    B:[
+        A:box "3" width 0.5 height 0.5 shaded "darkgray"
+        B:box "4" same
+        C:box "5" same
+          box width 0.5 height 0.5
+    ]
+
+    C:[
+        A:box "6" width 0.5 height 0.5 shaded "lightgray"
+        B:box "7" same
+        C:box "8" same
+          box width 0.5 height 0.5
+    ]
+
+    Placeholder:box "" width 6 height 0.5 dashed
+
+    D:[
+        A:box "45" width 0.5 height 0.5 shaded "darkgray"
+        B:box "46" same
+        C:box "47" same
+          box width 0.5 height 0.5
+    ]
+]}
+
+define output {[
+    right
+    A:[
+        box "0" width 0.5 height 0.5 shaded "lightgray"
+        box "1" same
+        box "2" same
+    ]
+
+    B:[
+        box "3" width 0.5 height 0.5 shaded "darkgray"
+        box "4" same
+        box "5" same
+    ]
+
+    C:[
+        box "6" width 0.5 height 0.5 shaded "lightgray"
+        box "7" same
+        box "8" same
+    ]
+
+    Placeholder:box "... 39 bytes ..." width 5 height 0.5 dashed
+
+    D:[
+        box "45" width 0.5 height 0.5 shaded "darkgray"
+        box "46" same
+        box "47" same
+    ]
+]}
+
+
+##################################################
+# layout
+
+BASE64:encoded
+
+down
+move hspace
+right
+move -BASE64.width
+
+UNP:unpacked
+
+down
+move hspace
+right
+move -BASE64.width
+
+PCK:packed
+
+down
+move hspace
+right
+move -BASE64.width
+
+OUT:output
+
+##################################################
+# arrows
+
+# decode
+
+arrow from BASE64.A.b to UNP.A.t
+arrow from BASE64.B.b to UNP.B.t
+arrow from BASE64.C.b to UNP.C.t
+arrow from BASE64.D.b to UNP.D.t
+arrow from BASE64.E.b to UNP.E.t
+arrow from BASE64.F.b to UNP.F.t
+arrow from BASE64.G.b to UNP.G.t
+arrow from BASE64.H.b to UNP.H.t
+arrow from BASE64.I.b to UNP.I.t
+arrow from BASE64.J.b to UNP.J.t
+arrow from BASE64.K.b to UNP.K.t
+arrow from BASE64.L.b to UNP.L.t
+arrow from BASE64.M.b to UNP.M.t
+arrow from BASE64.N.b to UNP.N.t
+arrow from BASE64.O.b to UNP.O.t
+arrow from BASE64.P.b to UNP.P.t
+
+# pack
+
+arrow from UNP.A.b to PCK.A.A.t
+arrow from UNP.B.b to PCK.A.A.t
+arrow from UNP.B.b to PCK.A.B.t
+arrow from UNP.C.b to PCK.A.B.t
+arrow from UNP.C.b to PCK.A.C.t
+arrow from UNP.D.b to PCK.A.C.t
+
+arrow from UNP.E.b to PCK.B.A.t
+arrow from UNP.F.b to PCK.B.A.t
+arrow from UNP.F.b to PCK.B.B.t
+arrow from UNP.G.b to PCK.B.B.t
+arrow from UNP.G.b to PCK.B.C.t
+arrow from UNP.H.b to PCK.B.C.t
+
+arrow from UNP.I.b to PCK.C.A.t
+arrow from UNP.J.b to PCK.C.A.t
+arrow from UNP.J.b to PCK.C.B.t
+arrow from UNP.K.b to PCK.C.B.t
+arrow from UNP.K.b to PCK.C.C.t
+arrow from UNP.L.b to PCK.C.C.t
+
+arrow from UNP.M.b to PCK.D.A.t
+arrow from UNP.N.b to PCK.D.A.t
+arrow from UNP.N.b to PCK.D.B.t
+arrow from UNP.O.b to PCK.D.B.t
+arrow from UNP.O.b to PCK.D.C.t
+arrow from UNP.P.b to PCK.D.C.t
+
+# save
+
+arrow from PCK.A.b to OUT.A.t
+arrow from PCK.B.b to OUT.B.t
+arrow from PCK.C.b to OUT.C.t
+arrow from PCK.D.b to OUT.D.t
+
+# additional comments
+
+"step 1: translate in parallel from ASCII to 6-bit indices"  width 10 with .c at 1/2 <BASE64.Placeholder.c, UNP.Placeholder.c>
+"step 2: pack 4 x 6-bit indices into 24-bit words" width 10 with .c at 1/2 <UNP.Placeholder.c, PCK.Placeholder.c>
+"step 3: save 24-bit words in continuous memory region"          width 10 with .c at 1/2 <PCK.Placeholder.c, OUT.Placeholder.c>
+
+"64-byte input" ljust with .c at BASE64.e
+"ZMM register" ljust with .c at PCK.e
+"ZMM register" ljust with .c at UNP.e
+"48-byte output" ljust with .c at OUT.e
+
+.PE

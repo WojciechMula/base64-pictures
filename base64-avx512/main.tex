@@ -1,0 +1,24 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{chains,arrows,automata,decorations.markings,positioning,calc,decorations.pathreplacing,patterns}
+
+\begin{document}
+
+\par\noindent Joining 6-bit byte fields into continuous array of bits within 32-bit lane and then bytes in the whole AVX-512 register.
+
+
+\input{decoding-merging.tex}
+
+
+\par\noindent Example of process of decoding from ASCII into 6-bit values and error detection
+
+
+\input{decoding-lookup-example.tex}
+
+
+\par\noindent Encoding of a 3-byte binary chunk
+
+
+\input{encoding.tex}
+\end{document}

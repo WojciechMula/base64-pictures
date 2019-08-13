@@ -1,0 +1,61 @@
+bw=0.3
+
+define packed {[
+    right
+    for i=1 to 0 by -1 do {
+        C[i]:box "c" width bw height 0.5 shaded "lightgray"
+    }
+
+    for i=5 to 0 by -1 do {
+        D[i]:box "d" width bw height 0.5 shaded "darkgray"
+    }
+
+    for i=3 to 0 by -1 do {
+        B[i]:box "b" width bw height 0.5 shaded "lightblue"
+    }
+
+    for i=5 to 2 by -1 do {
+        C[i]:box "c" width bw height 0.5 shaded "lightgray"
+    }
+
+    for i=5 to 0 by -1 do {
+        A[i]:box "a" width bw height 0.5 shaded "lightgreen"
+    }
+
+    for i=5 to 4 by -1 do {
+        B[i]:box "b" width bw height 0.5 shaded "lightblue"
+    }
+]}
+
+define unpacked {[
+    right
+
+    box width bw height 0.5
+    box width bw height 0.5
+
+    for i=5 to 0 by -1 do {
+        D[i]:box "d" width bw height 0.5 shaded "darkgray"
+    }
+
+    box width bw height 0.5
+    box width bw height 0.5
+
+    for i=5 to 0 by -1 do {
+        C[i]:box "c" width bw height 0.5 shaded "lightgray"
+    }
+
+    box width bw height 0.5
+    box width bw height 0.5
+
+    for i=5 to 0 by -1 do {
+        B[i]:box "b" width bw height 0.5 shaded "lightblue"
+    }
+
+    box width bw height 0.5
+    box width bw height 0.5
+
+    for i=5 to 0 by -1 do {
+        A[i]:box "a" width bw height 0.5 shaded "lightgreen"
+    }
+
+]}
